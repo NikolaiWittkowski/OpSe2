@@ -3,6 +3,8 @@ package MVC;
 import business.CafeModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -21,6 +23,11 @@ public class CafeView {
 	
 	private CafeControl caCon;
 	private CafeModel caMod;
+	
+	
+	private AlertType alertTyp;	
+	private String titel;
+	private String meldung;
 	
 	private Pane pane     					= new  Pane();
     private Label lblEingabe    	 		= new Label("Eingabe");
@@ -44,8 +51,13 @@ public class CafeView {
     private MenuItem mnItmTxtImport 		= new MenuItem("txt-Import");
     private MenuItem mnItmCsvExport 		= new MenuItem("csv-Export");    
 	
-	 public CafeView(Stage primaryStage) {
-
+	 public CafeView(CafeControl cafeControl, CafeModel caMod, Stage primaryStage) {
+		   	Scene scene = new Scene(this.pane, 700, 340);
+	    	primaryStage.setScene(scene);
+	    	primaryStage.setTitle("Verwaltung von Cafe");
+	    	primaryStage.show();
+	    	this.initKomponenten();
+			this.initListener();
 	}
 
 	private void initKomponenten(){
@@ -159,5 +171,23 @@ public class CafeView {
 	       	new MeldungsfensterAnzeiger(AlertType.ERROR,
 	        	"Fehler", meldung).zeigeMeldungsfensterAn();
 	    }
+	    
+	    public void MeldungsfensterAnzeiger(AlertType alertTyp, String titel, String meldung){
+			this.alertTyp = alertTyp;
+			this.titel = titel;
+			this.meldung = meldung;
+			if(meldung == null || "".equals(meldung)){
+				this.meldung = "Die Meldung ist nicht vorhanden.";
+			}
+		}
 
-}
+	    public void zeigeMeldungsfensterAn(){
+	    	Alert alert = new Alert(alertTyp);
+		    alert.setTitle(this.titel);
+		    alert.setContentText(this.meldung);
+		    alert.showAndWait();
+	    }   
+
+	}
+
+

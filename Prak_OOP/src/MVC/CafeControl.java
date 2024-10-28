@@ -2,11 +2,18 @@ package MVC;
 
 import business.Cafe;
 import business.CafeModel;
+import javafx.stage.Stage;
 
 public class CafeControl {
 	
 	private CafeView caView;
 	private CafeModel caMod;
+	private Cafe cafe;
+	
+	public CafeControl(Stage primaryStage) {
+		this.caMod = new CafeModel();
+		this.caView = new CafeView(this, caMod, primaryStage);
+	}
 	
     void nehmeCafeAuf(){
     	try{

@@ -11,7 +11,7 @@ import MVC.CafeView;
 
 public class CafeModel {
 	
-	private CafeControl caCon;
+	private Cafe cafe;
 	private CafeView caView;
 	
 	   public void leseAusDatei(String typ){
@@ -46,7 +46,7 @@ public class CafeModel {
 			try {
 				BufferedWriter aus 
 					= new BufferedWriter(new FileWriter("CafeAusgabe.csv", true));
-				aus.write(caCon.gibCafeZurueck(';'));
+				aus.write(cafe.gibCafeZurueck(';'));
 				aus.close();
 				caView.zeigeInformationsfensterAn(
 		   			"Die Cafe wurden gespeichert!");
