@@ -1,5 +1,6 @@
 package MVC;
 
+import business.Cafe;
 import business.CafeModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
