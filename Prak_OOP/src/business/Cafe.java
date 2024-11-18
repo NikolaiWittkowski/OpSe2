@@ -8,7 +8,7 @@ public class Cafe {
     private String ort;
     // Beschreibung
     private String beschreibung;
-    //mit angeschlossener Bäckerei? 
+    //mit angeschlossener Bï¿½ckerei? 
     private boolean mitBackwerk;
     // Kafeeprodukte des Cafe
     private String[] kaffeeprodukte;
@@ -104,4 +104,3 @@ public class Cafe {
   		    + this.getKaffeeProdukteAlsString(trenner) + "\n";
   	}
 }
-
